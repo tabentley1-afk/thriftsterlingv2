@@ -1,0 +1,74 @@
+<% layout('layout') -%>
+<h3>Reports</h3>
+<p class="text-muted">Summary across all <%= total %> pickup tickets ever submitted.</p>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="text-muted small">Total tickets</div>
+      <div class="fs-3 fw-bold"><%= total %></div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="text-muted small">This month (CT)</div>
+      <div class="fs-3 fw-bold"><%= thisMonthCount %></div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="text-muted small">Total est. cost</div>
+      <div class="fs-3 fw-bold">$<%= costTotal.toFixed(2) %></div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-center"><div class="card-body">
+      <div class="text-muted small">Avg. cost / ticket</div>
+      <div class="fs-3 fw-bold">$<%= avgCost.toFixed(2) %></div>
+    </div></div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card"><div class="card-header">Tickets by status</div>
+      <div class="card-body">
+        <table class="table table-sm mb-0">
+          <% Object.entries(byStatus).forEach(([k,v]) => { %>
+            <tr><td class="text-capitalize"><%= k %></td><td class="text-end"><strong><%= v %></strong></td></tr>
+          <% }) %>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card"><div class="card-header">Items by category</div>
+      <div class="card-body">
+        <table class="table table-sm mb-0">
+          <% Object.entries(byCategory).forEach(([k,v]) => { %>
+            <tr><td class="text-capitalize"><%= k %></td><td class="text-end"><strong><%= v %></strong></td></tr>
+          <% }) %>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card"><div class="card-header">Volume</div>
+      <div class="card-body">
+        <p class="mb-1">Bags of clothing donated: <strong><%= bagsTotal %></strong></p>
+        <p class="mb-1">Pieces of furniture donated: <strong><%= furnitureTotal %></strong></p>
+        <p class="mb-0">Total round-trip pickup miles: <strong><%= milesTotal %> mi</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card"><div class="card-header">Completed pickups</div>
+      <div class="card-body">
+        <p class="mb-1">Completed: <strong><%= byStatus.completed %></strong></p>
+        <p class="mb-0">Cost of completed pickups: <strong>$<%= completedCostTotal.toFixed(2) %></strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a class="btn btn-sm btn-outline-secondary mt-4" href="/admin/tickets">&larr; Back to tickets</a>
