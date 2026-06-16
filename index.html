@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thrive on Thrift — Donation Management System | CIS 450 Capstone</title>
+<meta name="description" content="Project documentation for the Thrive on Thrift Donation Management System: a donation pickup scheduling app built for a Sterlington, LA nonprofit thrift store. CIS 450 Systems Analysis, Design & Implementation capstone by Taylor Bentley.">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>CIS 450 — Systems Analysis, Design &amp; Implementation</span>
+    <span>
+      <a href="https://www.taylorbentleyit.com/index.html" target="_blank" rel="noopener">Taylor Bentley</a> ·
+      <a href="https://github.com/tabentley1-afk/thrift-sterlington" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Capstone Project · Donation Management System (DMS)</span>
+    <h1>Thrive on Thrift — Donation Pickup &amp; Scheduling System</h1>
+    <p class="lede">A donation pickup management system built for Thrive on Thrift, a nonprofit thrift store in Sterlington, LA. It gives donors an online way to request a pickup, and gives staff a dashboard to schedule the van, price items, and track every ticket from request to completion.</p>
+    <div class="pill-row">
+      <a class="pill solid" href="https://thrift-sterlington.onrender.com/donate" target="_blank" rel="noopener">Live Site ↗</a>
+      <a class="pill" href="https://github.com/tabentley1-afk/thrift-sterlington" target="_blank" rel="noopener">Source Code ↗</a>
+      <a class="pill" href="#run">Run It Locally ↓</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow">Overview</span></div>
+    <h2>What this system does</h2>
+    <p class="section-intro">Before this project, pickup requests for Thrive on Thrift were handled by phone and memory. The DMS replaces that with a public donor form, an internal ticket queue, automatic mileage and labor-cost estimates, a drag-and-drop van calendar, blackout-day handling, and CSV export for recordkeeping — all built around Central Time business hours.</p>
+    <p class="section-intro" style="margin-top:-12px">It's a server-rendered Node.js app (Express + EJS), backed by SQLite, deployed on Render. The Google Maps Distance Matrix API recalculates round-trip mileage and drive time automatically whenever staff open a ticket.</p>
+    <div class="chips">
+      <span class="chip">Node.js / Express</span>
+      <span class="chip">EJS + ejs-mate</span>
+      <span class="chip">better-sqlite3</span>
+      <span class="chip">Luxon (America/Chicago)</span>
+      <span class="chip">Bootstrap 5</span>
+      <span class="chip">FullCalendar</span>
+      <span class="chip">Google Maps Distance Matrix API</span>
+      <span class="chip">Render (hosting)</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-deep">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow">Documentation</span></div>
+    <h2>Milestones 1, 2 &amp; 3</h2>
+    <p class="section-intro">This project was completed in three milestones over the course of the CIS 450 capstone. Each PDF below is the original deliverable submitted for that phase.</p>
+    <div class="m-grid">
+      <div class="m-card">
+        <span class="tag">MILESTONE 1</span>
+        <h3>Planning &amp; Investigation</h3>
+        <p>Team introduction, rules of engagement, work plan, preliminary investigation, risk assessment, and project proposal.</p>
+        <a href="https://87424f79-0e9c-468f-9d45-35ad03b69f45.filesusr.com/ugd/e7ff29_59b61818f94c4229b3f4d007c225be6e.pdf" target="_blank" rel="noopener">Download PDF ↓</a>
+      </div>
+      <div class="m-card">
+        <span class="tag">MILESTONE 2</span>
+        <h3>Analysis &amp; Design Foundation</h3>
+        <p>Current and proposed business process models, use cases, system requirements, data flow diagrams, and entity relationship diagram.</p>
+        <a href="https://87424f79-0e9c-468f-9d45-35ad03b69f45.filesusr.com/ugd/e7ff29_3790a0ab7cf54e85a2ad00a00a30372e.pdf" target="_blank" rel="noopener">Download PDF ↓</a>
+      </div>
+      <div class="m-card">
+        <span class="tag">MILESTONE 3</span>
+        <h3>Final Design &amp; Implementation Planning</h3>
+        <p>Physical process model, interface design, data design, and system acquisition strategy.</p>
+        <a href="https://87424f79-0e9c-468f-9d45-35ad03b69f45.filesusr.com/ugd/e7ff29_26d6380483dc4e658324d8850378f804.pdf" target="_blank" rel="noopener">Download PDF ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow">Feature Tour</span></div>
+    <h2>Walkthrough</h2>
+
+    <div class="feature">
+      <div class="copy">
+        <span class="badge">Public</span>
+        <h3>Donation Request Page</h3>
+        <p>Donors schedule a free pickup online: contact info, pickup address, item categories, condition, notes, a preferred date and time, and up to 10 photos — so staff have what they need before approving a pickup.</p>
+        <p class="route">GET /donate</p>
+      </div>
+      <div class="shot"><img src="https://static.wixstatic.com/media/e7ff29_2e27f4ad937043c29434b63393107654~mv2.png" alt="Donation request form screenshot"></div>
+    </div>
+
+    <div class="feature rev">
+      <div class="copy">
+        <span class="badge">Staff</span>
+        <h3>Admin Tickets Dashboard</h3>
+        <p>A central queue of every pickup request, with status, donor info, and preferred time at a glance, plus quick access to availability, the calendar, blackout days, reports, and CSV export.</p>
+        <p class="route">GET /admin/tickets (session-protected)</p>
+      </div>
+      <div class="shot"><img src="https://static.wixstatic.com/media/e7ff29_92cc559d9d30434196520c8ff341e1b7~mv2.png" alt="Admin tickets dashboard screenshot"></div>
+    </div>
+
+    <div class="feature">
+      <div class="copy">
+        <span class="badge">Staff</span>
+        <h3>Ticket Detail Page</h3>
+        <p>One request in full: contact info, items, condition, notes, and photos, alongside auto-recalculated mileage and drive time, an editable crew size and fuel rate, live cost estimate, status control, and scheduling.</p>
+        <p class="route">GET /admin/tickets/:id</p>
+      </div>
+      <div class="shot"><img src="https://static.wixstatic.com/media/e7ff29_10c0603b2bf245d4bfff9f24a7509e8c~mv2.png" alt="Ticket detail page screenshot"></div>
+    </div>
+
+    <div class="feature rev">
+      <div class="copy">
+        <span class="badge">Staff</span>
+        <h3>Van Schedule</h3>
+        <p>A running list of upcoming scheduled pickups — start time, end time, donor, and pickup address — so staff can plan the single pickup van without double-booking. Also available as a drag-and-drop month calendar.</p>
+        <p class="route">GET /admin/availability · GET /admin/calendar</p>
+      </div>
+      <div class="shot"><img src="https://static.wixstatic.com/media/e7ff29_3415e7bd81c04794bcf636ef15ddb672~mv2.png" alt="Van schedule page screenshot"></div>
+    </div>
+
+    <div class="feature">
+      <div class="copy">
+        <span class="badge">Staff</span>
+        <h3>CSV Export</h3>
+        <p>One-click export of every ticket — donor info, address, categories, condition, preferred time, mileage, drive time, crew size, and estimated cost — for offline reporting and recordkeeping.</p>
+        <p class="route">GET /admin/export.csv</p>
+      </div>
+      <div class="shot"><img src="https://static.wixstatic.com/media/e7ff29_f29c59301eed4423abf01d4c33a8478a~mv2.png" alt="CSV export screenshot"></div>
+    </div>
+
+    <div class="feature rev">
+      <div class="copy">
+        <span class="badge">New</span>
+        <h3>Reports</h3>
+        <p>A summary dashboard: tickets by status and category, bags and furniture pieces donated, total round-trip miles, and total and average estimated cost — including a completed-pickups breakdown.</p>
+        <p class="route">GET /admin/reports</p>
+      </div>
+      <div class="shot" style="display:flex;align-items:center;justify-content:center;background:var(--paper-deep);border-radius:14px;min-height:180px;border:1px dashed var(--line)">
+        <span class="mono" style="color:#6b6650;font-size:13.5px">Added in this update — see fix log below</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section-deep">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow">Changelog</span></div>
+    <h2>What was reviewed and fixed in this pass</h2>
+    <p class="section-intro">A code review against this documentation turned up a few real issues. Here's what changed:</p>
+    <div class="fix-list">
+      <div class="fix">
+        <span class="kind bug">BUG</span>
+        <div>
+          <h4>Reports link went nowhere</h4>
+          <p>The admin dashboard already linked to <code>/admin/reports</code>, and the documentation already described a "reports" feature, but the route didn't exist. Added the route and a summary dashboard (tickets by status/category, totals, completed-pickup costs).</p>
+        </div>
+      </div>
+      <div class="fix">
+        <span class="kind bug">BUG</span>
+        <div>
+          <h4>Van Schedule address was always blank</h4>
+          <p><code>/admin/availability</code> read a <code>pickup_address</code> column from the <code>schedule</code> table, but that table never stored an address — so the column always rendered empty. <code>listScheduled()</code> now joins against <code>tickets</code> so the real pickup address shows up.</p>
+        </div>
+      </div>
+      <div class="fix">
+        <span class="kind sec">SECURITY</span>
+        <div>
+          <h4>.env and data.sqlite are tracked in git</h4>
+          <p>The repository has a committed <code>.env</code> file containing a live Google Maps API key, plus a tracked <code>data.sqlite</code> database file, even though both are listed in <code>.gitignore</code> — they were committed before the ignore rule was added. <strong>Recommended:</strong> rotate the API key, then run <code>git rm --cached .env data.sqlite</code> and commit, so future donor data never lands in version control. See the README for the exact commands.</p>
+        </div>
+      </div>
+      <div class="fix">
+        <span class="kind add">ADDED</span>
+        <div>
+          <h4>Public homepage</h4>
+          <p><code>/</code> previously just redirected straight to the donor form. It now renders an actual homepage — store story, how a pickup works, what's accepted, hours, and directions — so the live URL works as a real front door, not just a form.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="run">
+  <div class="wrap">
+    <div class="kicker"><span class="eyebrow">Setup</span></div>
+    <h2>Run it locally</h2>
+    <pre>git clone https://github.com/tabentley1-afk/thrift-sterlington.git
+cd thrift-sterlington
+npm install
+cp .env.example .env        # then fill in GOOGLE_MAPS_API_KEY
+npm run init-db
+npm start                   # http://localhost:3000</pre>
+    <table class="env-table">
+      <tr><th>Variable</th><th>Purpose</th></tr>
+      <tr><td class="mono">GOOGLE_MAPS_API_KEY</td><td>Required. Powers automatic mileage/drive-time recalculation on ticket open.</td></tr>
+      <tr><td class="mono">ADMIN_SECRET</td><td>Password for /admin staff login. Defaults to <code>password</code> if unset — change this in production.</td></tr>
+      <tr><td class="mono">SESSION_SECRET</td><td>Signs the admin session cookie.</td></tr>
+      <tr><td class="mono">FUEL_COST_PER_MILE</td><td>Used in cost estimates. Defaults to 0.20.</td></tr>
+      <tr><td class="mono">EMPLOYEE_HOURLY</td><td>Used in labor cost estimates. Defaults to 10.</td></tr>
+      <tr><td class="mono">DATA_DIR / UPLOAD_DIR</td><td>Optional. Persistent storage paths for the database and uploaded photos in production.</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div style="font-family:'Fraunces',serif;font-size:17px;margin-bottom:6px">Taylor Bentley</div>
+      <div>Open to entry-level help desk, IT support, and technical support roles.</div>
+    </div>
+    <div>
+      <div><a href="tel:3186141088">(318) 614-1088</a></div>
+      <div><a href="mailto:tabentley1@gmail.com">tabentley1@gmail.com</a></div>
+      <div><a href="https://www.linkedin.com/in/taylor-bentley-a34ab1236/" target="_blank" rel="noopener">linkedin.com/in/taylor-bentley</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
